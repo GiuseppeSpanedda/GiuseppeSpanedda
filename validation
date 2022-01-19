@@ -1,0 +1,193 @@
+function validateForm() {
+	var name = document.getElementById("name").value;
+	var cognome = document.getElementById("cognome").value;
+	var citta = document.getElementById("citta").value;
+	var indirizzo = document.getElementById("indirizzo").value;
+	var email = document.getElementById("email").value;
+	var cf = document.getElementById("cf").value;
+	var mappaErrori = new Map();
+	var patternMail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/; //pattern per la mail
+	var patterncf = /^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/i; //pattern per il codice fiscale
+
+	if (name == null || name == "") {
+		mappaErrori.set("name", "Devi inserire un nome");
+		document.getElementById("name").style.borderColor = "red";
+		document.getElementById("name").style.color = "red";
+		
+	}else{
+		document.getElementById("name").style.color = "black";
+		document.getElementById("name").style.borderColor = "black";
+	} if (cognome == null || cognome == "") {
+		mappaErrori.set("cognome", "Devi inserire un cognome");
+		document.getElementById("cognome").style.borderColor = "red";
+		document.getElementById("cognome").style.color = "red";
+	} else{
+		document.getElementById("cognome").style.color = "black";
+		document.getElementById("cognome").style.borderColor = "black";
+	} if (citta == null || citta == "") {
+		mappaErrori.set("citta", "Devi inserire una città di provenienza");
+		document.getElementById("citta").style.borderColor = "red";
+		document.getElementById("citta").style.color = "red";
+	}else{
+		document.getElementById("citta").style.color = "black";
+		document.getElementById("citta").style.borderColor = "black";
+	} if (indirizzo == null || indirizzo == "") {
+		mappaErrori.set("indirizzo", "Devi inserire un indirizzo");
+		document.getElementById("indirizzo").style.borderColor = "red";
+		document.getElementById("indirizzo").style.color = "red";
+	}else{
+		document.getElementById("indirizzo").style.color = "black";
+		document.getElementById("indirizzo").style.borderColor = "black";
+	} if (email == null || email == "") {
+		mappaErrori.set("email", "Devi inserire un indirizzo email");
+		document.getElementById("email").style.borderColor = "red";
+		document.getElementById("email").style.color = "red";
+		
+	} else if (email.match(patternMail) == null) {
+		mappaErrori.set("email", "L'indirizzo email inserito non è valido");
+		document.getElementById("email").style.borderColor = "red";
+		document.getElementById("email").style.color = "red";
+		
+	}else{
+		document.getElementById("email").style.color = "black";
+		document.getElementById("email").style.borderColor = "black";
+	} if (cf == null || cf == "") {
+		mappaErrori.set("cf", "Devi inserire un codice fiscale");
+		document.getElementById("cf").style.borderColor = "red";
+		document.getElementById("cf").style.color = "red";
+		
+	} else if (cf.match(patterncf) == null) {
+		mappaErrori.set("cf", "il codice fiscale non è valido");
+		document.getElementById("cf").style.borderColor = "red";
+		document.getElementById("cf").style.color = "red";
+	}else{
+		document.getElementById("cf").style.color = "black";
+		document.getElementById("cf").style.borderColor = "black";
+	}
+
+
+	var id=""
+	
+		if(mappaErrori.size==0){
+			return true;
+	 }else{for (x of mappaErrori) { // x 1 = value x 0 =key
+		
+		id= x[0];
+		document.getElementById(id+"error").innerHTML=x[1];
+	}
+      
+	return false;
+}
+    }
+
+	function validCf(){
+	var patterncf = /^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/i; //pattern per il codice fiscale
+	var cf = document.getElementById("cf").value;
+	if (cf == null || cf == "") {
+		document.getElementById("cf"+"error").innerHTML="Devi inserire un codifce fiscale";
+		document.getElementById("cf").style.borderColor = "red";
+		document.getElementById("cf").style.color = "red";
+	} else if (cf.match(patterncf) == null) {
+		document.getElementById("cf"+"error").innerHTML="Codice fiscale errato";
+		document.getElementById("cf").style.borderColor = "red";
+		document.getElementById("cf").style.color = "red";
+	} else{
+		document.getElementById("cf").style.color = "black";
+		document.getElementById("cf").style.borderColor = "black";
+		document.getElementById("cf"+"error").innerHTML="";
+	}
+}
+
+ 	function validName(){
+	var name = document.getElementById("name").value;
+	if (name == null || name == "") {
+		document.getElementById("name"+"error").innerHTML="Inserisci un nome";
+		document.getElementById("name").style.borderColor = "red";
+		document.getElementById("name").style.color = "red";
+	}  else{
+		document.getElementById("name").style.color = "black";
+		document.getElementById("name").style.borderColor = "black";
+		document.getElementById("name"+"error").innerHTML="";
+	}
+}
+
+	function validCognome(){
+	var cognome = document.getElementById("cognome").value;
+	if (cognome == null || cognome == "") {
+		document.getElementById("cognome"+"error").innerHTML="cognome";
+		document.getElementById("cognome").style.borderColor = "red";
+		document.getElementById("cognome").style.color = "red";
+	}  else{
+		document.getElementById("cognome").style.color = "black";
+		document.getElementById("cognome").style.borderColor = "black";
+		document.getElementById("cognome"+"error").innerHTML="";
+	}
+}
+
+	function validCitta(){
+	var citta = document.getElementById("citta").value;
+	if (citta == null || citta == "") {
+		document.getElementById("citta"+"error").innerHTML="Devi inserire una città";
+		document.getElementById("citta").style.borderColor = "red";
+		document.getElementById("citta").style.color = "red";
+	}  else{
+		document.getElementById("citta").style.color = "black";
+		document.getElementById("citta").style.borderColor = "black";
+		document.getElementById("citta"+"error").innerHTML="";
+	}
+}
+
+	function validIndirizzo(){
+	var indirizzo = document.getElementById("indirizzo").value;
+	if (indirizzo == null || indirizzo == "") {
+		document.getElementById("indirizzo"+"error").innerHTML="Inserisci un indirizzo";
+		document.getElementById("indirizzo").style.borderColor = "red";
+		document.getElementById("indirizzo").style.color = "red";
+	}  else{
+		document.getElementById("indirizzo").style.color = "black";
+		document.getElementById("indirizzo").style.borderColor = "black";
+		document.getElementById("indirizzo"+"error").innerHTML="";
+	}
+}
+
+	function validEmail(){
+	var patternMail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/; //pattern per la mail
+	var email = document.getElementById("email").value;
+	if (email == null || email == "") {
+		document.getElementById("email"+"error").innerHTML="Devi inserire una e-mail";
+		document.getElementById("email").style.borderColor = "red";
+		document.getElementById("email").style.color = "red";
+	} else if (email.match(patternMail) == null) {
+		document.getElementById("email"+"error").innerHTML="Email errata";
+		document.getElementById("email").style.borderColor = "red";
+		document.getElementById("email").style.color = "red";
+	} else{
+		document.getElementById("email").style.color = "black";
+		document.getElementById("email").style.borderColor = "black";
+		document.getElementById("email"+"error").innerHTML="";
+	}
+}
+
+	function validNumero(){
+	var numero=document.getElementById("numero").value;
+	var patternNumber =/^[0-9]*\d$/;
+	if (numero.match(patternNumber)==null){
+		document.getElementById("num"+"error").innerHTML="Devi inserire solo numeri"
+		document.getElementById("numero").style.borderColor = "red";
+		document.getElementById("numero").style.color = "red";
+	}else{
+		document.getElementById("numero").style.color = "black";
+		document.getElementById("numero").style.borderColor = "black";
+		document.getElementById("num"+"error").innerHTML="";
+	}
+	
+	
+}
+
+	function isNumberKey(evt){
+    var charCode = (evt.which);
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}
+
