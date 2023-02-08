@@ -1,4 +1,4 @@
-package eserciziperlaforma;
+package eserciziJava;
 
 import java.util.ArrayList;
 import java.util.List;
