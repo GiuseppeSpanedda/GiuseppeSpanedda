@@ -8,3 +8,9 @@ insert into Customers (id, name) values ('4', 'Max')
 Truncate table Orders
 insert into Orders (id, customerId) values ('1', '3')
 insert into Orders (id, customerId) values ('2', '1')
+
+--Write an SQL query to report all customers who never order anything.
+
+select name 
+from Customers c
+where c.id not in (select id from Orders);
